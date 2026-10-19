@@ -26,6 +26,7 @@ builder.Services.AddCors(options =>
 //Nuestros Servicios 
 
 builder.Services.AddSingleton<ITareaService, TareaService>();
+builder.Services.AddSingleton<ILicenciaService, LicenciaService>();
 
 
 var app = builder.Build();
@@ -46,6 +47,7 @@ app.UseHttpsRedirection();
 
 //Endpoints
 app.MapTareaEndpoints();
-
+app.MapLicenciaEndpoints();
 
 app.Run();
+

@@ -70,3 +70,12 @@ C:\Users\danyl\Downloads\my-app-blank\my-app-blank\TareasAPI\obj\Debug\net10.0\r
 C:\Users\danyl\Downloads\my-app-blank\my-app-blank\TareasAPI\obj\Debug\net10.0\TareasAPI.pdb
 C:\Users\danyl\Downloads\my-app-blank\my-app-blank\TareasAPI\obj\Debug\net10.0\TareasAPI.genruntimeconfig.cache
 C:\Users\danyl\Downloads\my-app-blank\my-app-blank\TareasAPI\obj\Debug\net10.0\ref\TareasAPI.dll
+C:\Users\danyl\Downloads\my-app-blank\my-app-blank\TareasAPI\obj\Debug\net10.0\TareasAPI.sourcelink.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\appsettings.Development.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\appsettings.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.staticwebassets.endpoints.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.exe
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.deps.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.runtimeconfig.json
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.dll
+C:\Users\danyl\AppData\Local\Temp\TareasAPI-verificacion\TareasAPI.pdb

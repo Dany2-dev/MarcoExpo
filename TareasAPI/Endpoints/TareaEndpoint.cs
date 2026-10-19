@@ -1,46 +1,50 @@
 using TareasAPI.Models;
 using TareasAPI.Services;
 
-namespace TareasAPI.Endpoint;
+namespace TareasAPI.Endpoints;
 
-public static class TareasEndpoints{
+public static class TareasEndpoints
+{
     public static void MapTareaEndpoints(this WebApplication app)
     {
-        //Get /api/tareas
-        var group = app.MapGroup("/api/tareas").WithTags("Tareas");
-        group.MapGet("/", (ITareaService services) => Result.Ok(services.ObtenerTodas()))
+        MapGrupo(app, "/api/tareas");
+        MapGrupo(app, "/tareas");
+    }
 
-        //Get /tareas/{id}
-        group.MapGet("/{id}",(ITareaService services, int id) =>
+    private static void MapGrupo(WebApplication app, string ruta)
+    {
+        var group = app.MapGroup(ruta).WithTags("Tareas");
+
+        // Obtener todas las tareas
+        group.MapGet("/", (ITareaService service) => Results.Ok(service.ObtenerTodas()));
+
+        // Obtener una tarea por id
+        group.MapGet("/{id}", (ITareaService service, int id) =>
         {
-            var tarea = services.ObtenerPorId(id);
+            var tarea = service.ObtenertareaPorId(id);
             return tarea is null
-                ? Result.NotFound(new {mensaje = "Tarea no encontrada"})
-                : Result.Ok(tarea);
+                ? Results.NotFound(new { mensaje = "Tarea no encontrada" })
+                : Results.Ok(tarea);
         });
 
-        //Post /tareas
-        group.MapPost("/",(ITareaService services, Tarea NuevaTarea) =>
+        // Crear una tarea
+        group.MapPost("/", (ITareaService service, Tarea nuevaTarea) =>
         {
-           var creada = service.Crear(NuevaTarea)
-           return Result.Created($"/tareas/{creada.id}", creada); //201 
+            var creada = service.CrearTarea(nuevaTarea);
+            return Results.Created($"{ruta}/{creada.Id}", creada);
         });
 
-        //Put /tareas/{id}
-        group.MapPut("/{id}", (ITareaService service, int id, Tarea tareaActualizada) => 
-        {
-            service.Actualizar(id, tareaActualizada)
-                ? Results.NoContent()//204
-                : Results.NotFound(new {mensaje = "Tarea no encontrada"}); //404
-        });
+        // Actualizar una tarea
+        group.MapPut("/{id}", (ITareaService service, int id, Tarea tareaActualizada) =>
+            service.ActualizarTarea(id, tareaActualizada)
+                ? Results.NoContent()
+                : Results.NotFound(new { mensaje = "Tarea no encontrada" }));
 
-        //Delete /tareas/{id}
-        group.MapDelete("/{id}", (ITareaService service, int id) => 
-        {
+        // Eliminar una tarea
+        group.MapDelete("/{id}", (ITareaService service, int id) =>
             service.Eliminar(id)
-                ? Results.NoContent()//204
-                : Results.NotFound(new {mensaje = "Tarea no encontrada"}); //404
-        });
-        
+                ? Results.NoContent()
+                : Results.NotFound(new { mensaje = "Tarea no encontrada" }));
     }
 }
+
